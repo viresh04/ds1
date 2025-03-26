@@ -40,3 +40,34 @@ while(s[top] != '(')
 printf("postfix expression = %s",postfix);
 getch(); }
 ```
+```py
+/* Part - B 5  list of insertion sort using function*/
+#include<stdio.h>
+#include<conio.h>
+void insertion_sort(int a[], int n)
+{int pass,key,j;
+for(pass = 1; pass < n; pass++)
+{key = a[pass];
+for(j = pass-1; j >= 0 && key < a[j]; j--)
+{ a[j + 1] = a[j];
+}a[j + 1] = key;
+}}
+void main(){
+int a[20],n,i;
+clrscr();
+printf("enter the size of an array \n");
+scanf("%d",&n);
+printf("enter the array elements \n");
+for(i = 0; i < n ; i++)
+{ scanf("%d",&a[i]);}
+printf("entered elements are \n");
+for(i = 0; i < n; i++)
+{ printf("%4d",a[i]);
+}
+insertion_sort(a,n);
+printf("\nsorted array \n");
+for(i = 0; i < n ; i++)
+{printf("%4d",a[i]);
+}getch();
+}
+```
