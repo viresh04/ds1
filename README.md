@@ -68,62 +68,9 @@ if(f == 1)
 printf("key not found \n");
 }}
 ```
+# lab-2 t infix 
 ```py
-/* Part -A7sort a list of N elements quicksort */
-#include<stdio.h>
-#include<conio.h>
-void quicksort(int[],int,int);
-int partition(int[],int,int);
-void main(){
-int a[100],n,i;
-clrscr();
-printf("enter the size of an array \n");
-scanf("%d",&n);
-printf("enter the array elements \n");
-for(i = 0; i < n ; i++)
-{scanf("%d",&a[i]);
-}printf("entered elements are \n");
-for(i = 0; i < n; i++)
-{printf("%d \n",a[i]);
-}
-quicksort(a,0,n - 1);
-printf("sorted array \n");
-for(i = 0; i < n ; i++)
-{printf("%d \n",a[i]);
-}getch();
-}
-void quicksort(int a[100], int low, int high)
-{int j;
-if (low < high) {
-j = partition(a, low, high);  
-quicksort(a, low, j - 1); 
-quicksort(a, j + 1, high);  
-}}
-int partition(int a[100], int low, int high)
-{int temp, key, i, j;
-key = a[low];  
-i = low + 1;   
-j = high;      
-while (i <= j) {
-while (key >= a[i]) {
-i++;}
-while (key < a[j]) {
-j--;}
-if (i < j) {
-temp = a[i];
-a[i] = a[j];
-a[j] = temp;
-}}
-if (a[j] < a[low]) {
-temp = a[low];
-a[low] = a[j];
-a[j] = temp;
-}return j;  }
-
-```
-```py
-// lab-2 Develop a program to convert infix 
-#include<stdio.h>
+ #include<stdio.h>
 #include<string.h>
 #include<ctype.h>
 #include<conio.h>
@@ -163,8 +110,124 @@ while(s[top] != '(')
 printf("postfix expression = %s",postfix);
 getch(); }
 ```
+## 3rd circulr
 ```py
-/* Part - B 5  list of insertion sort using function*/
+#include<stdio.h>
+#include<conio.h>
+#define SIZE 4
+
+void cqinsert(int);
+void cqdelete();
+void cqdisplay();
+
+int cq[SIZE],front = - 1,rear = -1;
+
+void main()
+ {
+    int item,op;
+    clrscr();
+    do
+     {
+       printf("1.Insert \n");
+       printf("2.Delete \n");
+       printf("3.Display \n");
+       printf("4.Exit \n \n");
+       printf("enter option \n");
+       scanf("%d",&op);
+       switch(op)
+	{
+	  case 1:
+		  printf("enter item to be inserted \n");
+		  scanf("%d",&item);
+		  cqinsert(item);
+		  break;
+	  case 2:
+		  cqdelete();
+		  break;
+	  case 3:
+		  cqdisplay();
+		  break;
+       }
+      } while(op != 4);
+    }
+
+    void cqinsert(int item)
+     {
+	if(((front == 0) && (rear == SIZE - 1)) || (front == rear + 1))
+	  {
+	     printf("circular queue is full \n");
+	     return;
+	  }
+	if(front == -1)
+	  {
+	    front = 0;
+	    rear = 0;
+	  }
+	else if(rear == SIZE - 1)
+	 {
+	   rear = 0;
+	 }
+	else
+	 {
+	   rear = rear + 1;
+	 }
+	 cq[rear] = item;
+     }
+
+     void cqdelete()
+       {
+	  if(front == -1)
+	    {
+	      printf("circular queue is empty \n");
+	      return;
+	    }
+	  printf("delted element = %d \n",cq[front]);
+	  if(front == rear)
+	    {
+	      front = -1;
+	      rear = -1;
+	    }
+	  else if(front == SIZE - 1)
+	    {
+	       front = 0;
+	    }
+	  else
+	   {
+	     front = front + 1;
+	   }
+     }
+
+  void cqdisplay()
+    {
+       int i;
+       if(front == -1)
+	 {
+	    printf("circular queue is empty \n");
+	    return;
+	 }
+       printf("contents of circular queue \n");
+       if(front <= rear)
+	 {
+	   for(i = front; i <= rear; i++)
+	    {
+	      printf("%d \n",cq[i]);
+	    }
+	 }
+	else
+	 {
+	   for(i = front; i <= SIZE - 1; i++)
+	    {
+	      printf("%d \n",cq[i]);
+	    }
+	    for(i = 0; i <= rear; i++)
+	    {
+	      printf("%d \n",cq[i]);
+	    }
+	 }
+       }
+```
+# Part - B 5 function*/
+```py
 #include<stdio.h>
 #include<conio.h>
 void insertion_sort(int a[], int n)
@@ -194,8 +257,8 @@ for(i = 0; i < n ; i++)
 }getch();
 }
 ```
+# 6th inorder preorder 
 ```py
-// inorder preorder 
 #include<stdio.h>
 #include<alloc.h>
 #include<conio.h>
