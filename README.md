@@ -262,29 +262,30 @@ for(i = 0; i < n ; i++)
 #include<stdio.h>
 #include<alloc.h>
 #include<conio.h>
-struct node{
+struct node  {
 int data;
 struct node *llink;
-struct node *rlink; };
+struct node *rlink;
+};
 typedef struct node* NODE;
 NODE create(NODE,int);
 void preorder(NODE);
 void inorder(NODE);
 void postorder(NODE);
-void main(){
-int item,op;
-NODE root = NULL;
-clrscr();
-do{
-printf("1.Create \n");
-printf("2.Preorder \n");
-printf("3.Inorder \n");
-printf("4.Postorder \n");
-printf("5.Exit \n \n");
-printf("enter option \n");
-scanf("%d",&op);
-switch(op)
-{
+void main()  {
+ int item,op;
+ NODE root = NULL;
+ clrscr();
+ do
+ {
+  printf("1.Create \n");
+  printf("2.Preorder \n");
+  printf("3.Inorder \n");
+   printf("4.Postorder \n");
+   printf("5.Exit \n \n");
+   printf("enter option \n");
+   scanf("%d",&op);
+   switch(op)   {
 case 1:
 printf("enter the item to be inserted \n");
 scanf("%d",&item);
@@ -292,74 +293,83 @@ root = create(root,item);
 break;
 case 2:
 if(root == NULL)
-{
+ {
 printf("NULL Tree \n");
-}else
-{printf("Preorder traversal \n");
+}  else   {
+printf("Preorder traversal \n");
 preorder(root);
 }
-break;
+break; 
 case 3:
 if(root == NULL)
-{printf("NULL Tree \n");
-}else
 {
+printf("NULL Tree \n");
+}  else  {
 printf("Inorder traversal \n");
-inorder(root); }
+ inorder(root);
+}
 break;
 case 4:
 if(root == NULL)
-{printf("NULL Tree \n");
+ {
+printf("NULL Tree \n");
 }
-else
-{
-printf("Postorder traversal \n");
-postorder(root); }
-break; }
+else  {
+ printf("Postorder traversal \n");
+postorder(root);  }
+break;  }
  } while(op != 5);
-}NODE create(NODE root,int item)
+}
+NODE create(NODE root,int item)
+ {
+  NODE temp,cur,prev;
+  temp = (NODE) malloc(sizeof(struct node));
+  temp->data = item;
+  temp->llink = NULL;
+  temp->rlink = NULL;
+ if(root == NULL)
+  {
+return temp;
+ }
+ cur = root;
+ while(cur != NULL)
+ {
+   prev = cur;
+    if(item < cur->data)
 {
-NODE temp,cur,prev;
-temp = (NODE) malloc(sizeof(struct node));
-temp->data = item;
-temp->llink = NULL;
-temp->rlink = NULL;
-if(root == NULL)
-{ return temp;
-} cur = root;
-while(cur != NULL)
-{ prev = cur;
-if(item < cur->data)
-{cur = cur->llink;
-}else
-{
+  cur = cur->llink;
+ }
+  else{
 cur = cur->rlink;
-} }
-if(item < prev->data)
-{ prev->llink = temp;
-} else
-{
+}    }
+ if(item < prev->data)
+ {
+prev->llink = temp;  }
+ else  {
 prev->rlink = temp;
-} return root;
+}  return root;
 }
 void preorder(NODE root)
-{ if(root != NULL)
+    {
+  if(root != NULL)
 {
 printf("%d \t",root->data);
 preorder(root->llink);
 preorder(root->rlink);
-} }
+}   }
 void inorder(NODE root)
 {
-if(root != NULL) {
+ if(root != NULL) {
 inorder(root->llink);
 printf("%d \t",root->data);
-inorder(root->rlink);
-}}
-void postorder(NODE root)
-{ if(root != NULL)
-{postorder(root->llink);
+ inorder(root->rlink);
+}  }
+ void postorder(NODE root)
+ {
+   if(root != NULL)
+{
+postorder(root->llink);
 postorder(root->llink);
 printf("%d \t",root->data);
-} }
+	}  }
 ```
